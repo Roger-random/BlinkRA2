@@ -90,6 +90,20 @@ void PIN_MANAGER_Initialize(void)
 
    
     
+    
+    bool state = (unsigned char)GIE;
+    GIE = 0;
+    PPSLOCK = 0x55;
+    PPSLOCK = 0xAA;
+    PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
+
+    RA2PPSbits.RA2PPS = 0x02;   //RA2->PWM5:PWM5;
+
+    PPSLOCK = 0x55;
+    PPSLOCK = 0xAA;
+    PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
+
+    GIE = state;
 }       
 
 void PIN_MANAGER_IOC(void)
