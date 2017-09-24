@@ -71,6 +71,11 @@ void main(void)
     while (1)
     {
         // Add your application code
+        for(uint16_t delay = 0; delay < 25000; delay++)
+        {
+            ;
+        }
+        IO_RA2_Toggle();
     }
 }
 /**
